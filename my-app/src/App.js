@@ -8,17 +8,26 @@ function App(){
 
   let[pstatus,setpStatus]=useState(false);
 
+  let[modalstatus,setmodalStatus]=useState(false);
 
 
-
+  let[menustatus,setmenuStatus]=useState(false);
   return(
     <div className="App">
-      <input type={pstatus ? 'text' :'password'}/>
-      <button onClick={()=>setPstatus(!pstatus)}>
-        {pstatus ? 'Hide' : 'Show'}
-        {(status)? 'Hide':'Show'}
-        </button>
-        <br/>
+    <button className='micon'>&#9776;</button>
+    <div className={'menu ${menuStatus}'}>
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Courses</li>
+        <li>Gallery</li>
+        <li>Contant</li>
+
+      </ul>
+
+    </div>
+
+ 
         <button className={btnmodule.error}>Error</button>
         <button className={btnmodule.warning}>Demo</button>
 
