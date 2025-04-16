@@ -5,12 +5,23 @@ import Header from './Header';
 
 function App(){
   let[status,setStatus]=useState(false);
+
+  let[pstatus,setpStatus]=useState(false);
+
+
+
+
   return(
     <div className="App">
-      <button onClick={()=>setStatus(!status)}>
+      <input type={pstatus ? 'text' :'password'}/>
+      <button onClick={()=>setPstatus(!pstatus)}>
+        {pstatus ? 'Hide' : 'Show'}
         {(status)? 'Hide':'Show'}
+        </button>
+        <br/>
+        <button className={btnmodule.error}>Error</button>
+        <button className={btnmodule.warning}>Demo</button>
 
-      </button>
       {
       (status)
       ?
