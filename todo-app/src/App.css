@@ -36,47 +36,7 @@
     transform: rotate(360deg);
   }
 }
-.para{
-  background-color:red;
-  padding:10px;
-  width:1000px;
-  margin:auto;
-  text-align:left;
-}
-.menu{
-  width:80%;
-  text-align:left;
-  left:-100%;
-  position:fixed;
-  transition:0.5s;
-  list-style:none;
-  height:100vh;
-  background-color:yellow;
-}
-.activeMenu{
-  left:0%;
-}
-.menu ul li{
-  list-style:none;
-  padding:10px 0px;
-}
-.micon{
-  position:absolute;
-  right:10px;
-}
-form{
-  width:1170px;
-  margin:auto;
-  display:flex;
-  gap:20px;
-}
-form input{
-  height:40px;
-  flex-basis:80px;
-}
-form button{
-  flex-basis:80px;
-}
+
 .outerDiv{
   width:1170px;
   margin:auto;
