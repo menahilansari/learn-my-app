@@ -1,0 +1,22 @@
+.App {
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 400px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px 1px gray;
+  margin: 5px;
+  text-align: center;
+}
+.input {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
+.btn {
+  text-align: center;
+  color: blue;
+}
