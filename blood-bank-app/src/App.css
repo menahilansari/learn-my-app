@@ -1,22 +1,56 @@
 .App {
-  background-color: blueviolet;
   display: flex;
   flex-direction: column;
-  align-self: center;
+  align-items: center;
+  justify-content: center;
   width: 400px;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 1px 1px 5px 1px gray;
   margin: 5px;
-  text-align: center;
 }
 .input {
-  padding: 5px;
+  padding: 10px;
   margin: 5px;
   border-radius: 5px;
 }
-.btn {
-  text-align: center;
-  color: blue;
+.btn button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+.div {
+  width: 400px;
+  margin: auto;
+}
+.div ul {
+  margin: 0px;
+  padding: 0px;
+  margin-top: 50px;
+  list-style: none;
+}
+.div ul li {
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  position: relatives;
+  text-align: left;
+  background-color: black;
+}
+.div ul li span {
+  right: 20px;
 }

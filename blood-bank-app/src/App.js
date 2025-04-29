@@ -43,19 +43,44 @@ function App() {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
-        <input
-          type="text"
+
+        <select
           className="input"
-          placeholder="Blood Group"
           value={bloodGroup}
           onChange={(e) => setBloodgroup(e.target.value)}
-        />
+        >
+          <option value="">Select Blood Group</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+        </select>
+
         <div className="btn">
           <button type="submit">Save</button>
         </div>
       </form>
+      <div className="div">
+        <ul>
+          <BloodBankApp />
+          <BloodBankApp />
+          <BloodBankApp />
+        </ul>
+      </div>
     </div>
   );
 }
 
 export default App;
+
+function BloodBankApp() {
+  return (
+    <li>
+      HTML<span>&times;</span>
+    </li>
+  );
+}
