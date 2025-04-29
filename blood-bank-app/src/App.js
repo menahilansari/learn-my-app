@@ -7,19 +7,31 @@ function App() {
   const [lastName, setLastname] = useState("");
   const [phone, setPhone] = useState("");
   const [bloodGroup, setBloodgroup] = useState("");
+  const [bloodList, setBloodlist] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log({
-      firstName,
-      lastName,
+    const newEntry = {
+      id: Date.now(),
+      name: `${firstName} ${lastName}`,
       phone,
       bloodGroup,
-    });
+    };
+
+    setBloodlist([...bloodList, newEntry]);
+    setFirstname("");
+    setLastname("");
+    setPhone("");
+    setBloodgroup("");
   };
+
+  const handleDelete = (id) => {
+    setBloodlist(bloodList.filter((item) => item.id !== id));
+  };
+
   return (
-    <div class="App">
+    <div className="App">
       <h1>Blood Bank App</h1>
       <form onSubmit={handleSubmit}>
         <input
@@ -39,11 +51,10 @@ function App() {
         <input
           type="text"
           className="input"
-          placeholder="phone"
+          placeholder="Phone"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
-
         <select
           className="input"
           value={bloodGroup}
@@ -64,23 +75,30 @@ function App() {
           <button type="submit">Save</button>
         </div>
       </form>
+
       <div className="div">
         <ul>
-          <BloodBankApp />
-          <BloodBankApp />
-          <BloodBankApp />
+          {bloodList.map((item) => (
+            <BloodBankApp key={item.id} data={item} onDelete={handleDelete} />
+          ))}
         </ul>
       </div>
     </div>
   );
 }
 
-export default App;
-
-function BloodBankApp() {
+function BloodBankApp({ data, onDelete }) {
   return (
     <li>
-      HTML<span>&times;</span>
+      {data.name} | {data.phone} | {data.bloodGroup}
+      <span
+        onClick={() => onDelete(data.id)}
+        style={{ cursor: "pointer", color: "red", marginLeft: "10px" }}
+      >
+        &times;
+      </span>
     </li>
   );
 }
+
+export default App;
