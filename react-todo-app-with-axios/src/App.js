@@ -7,18 +7,13 @@ function App() {
   const [todoList, setTodoList] = useState([]);
 
   useEffect(() => {
-    const savedTodos = localStorage.getItem("todos");
-
-    if (savedTodos) {
-      setTodoList(JSON.parse(savedTodos));
-    }
+    fetch("https://dummyjson.com/todos/user/33")
+      .then((res) => res.json())
+      .then((result) => {
+        const todos = result.todos;
+        setTodoList(todos);
+      });
   }, []);
-
-  const generateUniqueId = () => {
-    const timestamp = Date.now().toString(36);
-    const random = Math.random().toString(36).substring(2, 8);
-    return `${timestamp}-${random}`;
-  };
 
   const _handleChangeInputValue = (input) => {
     setTodoName(input.target.value);
@@ -28,29 +23,49 @@ function App() {
     event.preventDefault();
     if (todoName.trim() === "") return;
 
-    const id = generateUniqueId();
-    const newTodo = { name: todoName, id };
-    const updatedTodoList = [...todoList, newTodo];
-
-    setTodoList(updatedTodoList);
-    localStorage.setItem("todos", JSON.stringify(updatedTodoList));
-    setTodoName("");
+    fetch("https://dummyjson.com/todos/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        todo: todoName,
+        completed: false,
+        userId: 33,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        const updatedTodoList = [...todoList, result];
+        setTodoList(updatedTodoList);
+        setTodoName("");
+      });
   };
 
   const _handleUpdateTodo = (todoId, newValue) => {
-    const updatedTodoList = todoList.map((item) =>
-      item.id === todoId ? { ...item, name: newValue } : item
-    );
-    setTodoList(updatedTodoList);
-
-    localStorage.setItem("todos", JSON.stringify(updatedTodoList));
+    fetch(`https://dummyjson.com/todos/${todoId}`, {
+      method: "PUT" /* or PATCH */,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        todo: newValue,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        const updatedTodoList = todoList.map((item) =>
+          item.id === todoId ? { ...item, todo: newValue } : item
+        );
+        setTodoList(updatedTodoList);
+      });
   };
 
   const _handleDeleteTodo = (todoId) => {
-    const updatedTodoList = todoList.filter((item) => item.id !== todoId);
-    setTodoList(updatedTodoList);
-
-    localStorage.setItem("todos", JSON.stringify(updatedTodoList));
+    fetch(`https://dummyjson.com/todos/${todoId}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        const updatedTodoList = todoList.filter((item) => item.id !== todoId);
+        setTodoList(updatedTodoList);
+      });
   };
 
   return (

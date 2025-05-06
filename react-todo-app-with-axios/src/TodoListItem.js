@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 const TodoListItem = ({ todo, onDelete, onUpdate }) => {
   const [editable, setEditable] = useState(false);
-  const [todoInputValue, setTodoInputValue] = useState(todo.name);
+  const [todoInputValue, setTodoInputValue] = useState(todo.todo);
 
   const _handleTodoEditable = () => {
-    setTodoInputValue(todo.name);
+    setTodoInputValue(todo.todo);
     setEditable(true);
   };
 
@@ -33,7 +33,7 @@ const TodoListItem = ({ todo, onDelete, onUpdate }) => {
           />
         </span>
       ) : (
-        <span>{todo?.name}</span>
+        <span>{todo?.todo}</span>
       )}
 
       {editable ? (
