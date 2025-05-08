@@ -42,7 +42,7 @@ function App() {
 
   const _handleUpdateTodo = (todoId, newValue) => {
     fetch(`https://dummyjson.com/todos/${todoId}`, {
-      method: "PUT" /* or PATCH */,
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         todo: newValue,
