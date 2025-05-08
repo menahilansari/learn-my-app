@@ -1,12 +1,19 @@
+import "./style.css";
 import React, { useState } from "react";
-import "./App.css";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const showValues = () => {
     alert(`Email: ${email}\nPassword: ${password}`);
+  };
+
+  const _moveToSignUpPage = () => {
+    navigate("/signup");
   };
 
   return (
@@ -35,7 +42,9 @@ function LoginPage() {
             Login
           </button>
         </form>
-        <p className="forgot-password-account">Don't have an account?Signup</p>
+        <p className="forgot-password-account">
+          Don't have an account?<span onClick={_moveToSignUpPage}>Signup</span>
+        </p>
       </div>
     </div>
   );

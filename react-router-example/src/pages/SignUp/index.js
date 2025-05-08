@@ -1,7 +1,9 @@
+import "./style.css";
 import React, { useState } from "react";
-import "./App.css";
+import { useNavigate } from "react-router-dom";
 
 function SignupPage() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmpassword] = useState("");
@@ -10,6 +12,10 @@ function SignupPage() {
     alert(
       `Email: ${email}\nPassword: ${password}\nConfirmpassword: ${confirmPassword}`
     );
+  };
+
+  const _moveToLoginPage = () => {
+    navigate("/");
   };
 
   return (
@@ -44,7 +50,9 @@ function SignupPage() {
             Signup
           </button>
         </form>
-        <p className="forgot-password-account">already have an account?login</p>
+        <p className="forgot-password-account">
+          already have an account?<span onClick={_moveToLoginPage}>login</span>
+        </p>
       </div>
     </div>
   );
